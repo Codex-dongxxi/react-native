@@ -1,0 +1,15 @@
+{
+  "name": "react-native-login-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.73.0"
+  }
+}
