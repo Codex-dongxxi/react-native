@@ -1,18 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
-import LoginForm from './components/LoginForm';
+import LoginScreen from './screens/LoginScreen';
+import SignUpScreen from './screens/SignUpScreen';
 
-const App = () => (
-  <SafeAreaView style={styles.container}>
-    <LoginForm />
-  </SafeAreaView>
-);
+const App = () => {
+  const [screen, setScreen] = useState('login');
+
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      {screen === 'login' ? (
+        <LoginScreen onSignUp={() => setScreen('signup')} />
+      ) : (
+        <SignUpScreen onLogin={() => setScreen('login')} />
+      )}
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
-    justifyContent: 'center',
-    padding: 16,
   },
 });
 
