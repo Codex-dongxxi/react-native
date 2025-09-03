@@ -4,7 +4,6 @@ import {View, TextInput, Button, StyleSheet, Alert} from 'react-native';
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const onSubmit = async () => {
     try {
       const response = await fetch('https://reqres.in/api/login', {
