@@ -1,25 +1,25 @@
 import React, {useState} from 'react';
 import {View, TextInput, Button, StyleSheet, Alert} from 'react-native';
 
-const LoginForm = () => {
+const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const onSubmit = async () => {
     try {
-      const response = await fetch('https://reqres.in/api/login', {
+      const response = await fetch('https://reqres.in/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({email, password}),
       });
       if (!response.ok) {
         const err = await response.json();
-        throw new Error(err.error || 'Login failed');
+        throw new Error(err.error || 'Registration failed');
       }
       const data = await response.json();
-      Alert.alert('Login Success', `Token: ${data.token}`);
+      Alert.alert('Registration Success', `ID: ${data.id}`);
     } catch (e) {
-      Alert.alert('Login Failed', e.message);
+      Alert.alert('Registration Failed', e.message);
     }
   };
 
@@ -40,7 +40,7 @@ const LoginForm = () => {
         placeholder="Password"
         secureTextEntry
       />
-      <Button title="Login" onPress={onSubmit} />
+      <Button title="Sign Up" onPress={onSubmit} />
     </View>
   );
 };
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginForm;
+export default SignUpForm;
